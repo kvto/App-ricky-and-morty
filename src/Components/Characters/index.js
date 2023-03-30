@@ -1,0 +1,1 @@
+export {default} from "./Characters" //componente de logica	 (peticion http + map)
