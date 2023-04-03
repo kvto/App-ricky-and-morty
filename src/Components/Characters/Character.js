@@ -1,3 +1,4 @@
+import moment from "moment";
 import {Col, Card, Button} from "react-bootstrap";
 const Character = ({image, id, name, gender, status, species, created}) => {
     return (  
@@ -9,10 +10,10 @@ const Character = ({image, id, name, gender, status, species, created}) => {
                         {name} - {gender}
                         </Card.Title>
                         <Card.Text>
-                            {status} - {species}
+                            {status === "Alive" ? "VIVO" : "MUERTO"} - {species}
                         </Card.Text>
                         <Card.Text>
-                        {created}
+                        <small>{moment(created).format("DD/MM/yyyy")}</small>
                         </Card.Text>
                         <Button type="button" variant="primary" size="lg">
                             Ver más
