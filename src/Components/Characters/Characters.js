@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import Character from './Character';
-import Loading from '../Loading';
-import Paginate from '../Paginate';
+import Loading from '../common/Loading';
+import Paginate from '../common/Paginate';
 /* Costum hook */
 import { useFetch } from '../../CustomHooks/useFetch';
+import Search from '../../Search/Search';
 
 const BASE_ENDPOINT = 'character'
-const Characters = ({search }) => {
+const Characters = () => {
+    
+  const [search, setSearch] = useState("");
     const [url, setUrl] = useState(BASE_ENDPOINT);
 
     useEffect(() => {
@@ -23,10 +26,14 @@ const Characters = ({search }) => {
         setUrl(`${BASE_ENDPOINT}?${newUrl}`);
     }
 
-    
+    const handlerSearch = (name) => {
+        setSearch(name);
+      }
+
     return ( 
         <>
         <Row>
+        <Search handlerSearch={handlerSearch}/>
             {
                 fetching
                 ? ( <Loading />)
